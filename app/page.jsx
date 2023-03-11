@@ -9,6 +9,7 @@ import {
   decrement,
   incrementByAmount,
 } from "./GlobalRedux/Features/counter/counterSlice";
+import Searchbar from "./components/SearchBar";
 
 export default function Home() {
   const count = useSelector((state) => state.counter.value);
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <Searchbar />
       <button className={styles.button} onClick={() => dispatch(increment())}>
         Increment
       </button>

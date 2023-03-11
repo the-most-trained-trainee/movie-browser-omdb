@@ -1,11 +1,12 @@
-import './globals.css'
+import "./globals.css";
 
-import { Providers } from './GlobalRedux/provider';
+import { Providers } from "./GlobalRedux/provider";
+import Menu from "./components/Menu";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -16,9 +17,10 @@ export default function RootLayout({
       <head />
       <body>
         <Providers>
+          <Menu />
           {children}
         </Providers>
       </body>
     </html>
-  )
+  );
 }
