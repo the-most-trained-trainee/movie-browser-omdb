@@ -13,7 +13,6 @@ const Search = async ({ searchParams }) => {
           {foundMovies.map((movie) => (
             <li key={movie.imdbID}>
               <MovieCard movie={movie} />
-              <AddFavorite favorite={movie} />
             </li>
           ))}
         </ul>
