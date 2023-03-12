@@ -1,5 +1,3 @@
-import "./globals.css";
-
 import { Providers } from "./GlobalRedux/provider";
 import Menu from "./components/Menu";
 

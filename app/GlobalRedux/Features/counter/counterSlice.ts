@@ -1,27 +1,37 @@
-'use client';
+"use client";
 
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-export interface CounterState {
-    value: number
-}
+type Movie = {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+};
 
-const initialState: CounterState = {
-    value: 0
-}
+type MoviesState = {
+  list: Movie[];
+};
 
-export const counterSlice = createSlice({
-    name: 'counter',
-    initialState,
-    reducers: {
-        increment: (state) => { state.value += 1 },
-        decrement: (state) => { state.value -= 1 },
-        incrementByAmount: (state, action) => {
-            state.value += action.payload;
-        }
-    }
-})
+const initialState: MoviesState = {
+  list: [],
+};
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+const movieSlice = createSlice({
+  name: "movies",
+  initialState,
+  reducers: {
+    addMovie(state, action: PayloadAction<string>) {
+      state.list.push(action.payload);
+    },
+    removeMovie(state, action: PayloadAction<string>) {
+      //   state.list = state.list.filter((todo) => todo.id !== action.payload);
+      console.log(action.payload);
+    },
+  },
+});
 
-export default counterSlice.reducer;
+export const { addMovie, removeMovie } = movieSlice.actions;
+
+export default movieSlice.reducer;
