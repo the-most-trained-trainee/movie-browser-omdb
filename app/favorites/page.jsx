@@ -1,24 +1,39 @@
 "use client";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import MovieCard from "../components/MovieCard";
 import AddFavorite from "../components/addFavorite";
+import { Grid } from "@mui/material";
+import { clearMovies } from "../GlobalRedux/Features/counter/movieSlice";
 
 const Favorites = () => {
-  const favoriteMovies = useSelector((store) => store.counter.list);
+  const favoriteMovies = useSelector((store) => store.movie.list);
+  const dispatch = useDispatch();
+
+  const movieListStyles = {
+    ml: "auto",
+    mr: "auto",
+    mt: 5,
+    maxWidth: 1200,
+  };
 
   return (
-    <div>
+    <>
+      <button onClick={() => dispatch(clearMovies())}>clear favorites</button>
       {!!favoriteMovies.length && (
-        <ul>
+        <Grid
+          container
+          spacing={2}
+          sx={movieListStyles}
+          direction="row"
+          justifyContent="space-around"
+          alignItems="center">
           {favoriteMovies.map((movie) => (
-            <li key={movie.imdbID}>
-              <MovieCard movie={movie} />
-            </li>
+            <MovieCard key={movie.imdbID} movie={movie} />
           ))}
-        </ul>
+        </Grid>
       )}
-    </div>
+    </>
   );
 };
 

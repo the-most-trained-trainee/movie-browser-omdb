@@ -12,7 +12,6 @@ const SearchBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push(`/search?query=${search}`);
-    console.log(search);
     setSearch("");
   };
 

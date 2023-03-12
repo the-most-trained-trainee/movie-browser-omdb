@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './Features/counter/counterSlice';
-import storage from 'redux-persist/lib/storage';
+import { configureStore } from "@reduxjs/toolkit";
+import movieReducer from "./Features/counter/movieSlice";
+
+import storage from "redux-persist/lib/storage";
 import {
   persistStore,
   persistReducer,
@@ -12,29 +13,27 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-
+} from "redux-persist";
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   version: 1,
   storage,
-}
+};
 
-const persistedCounterReducer = persistReducer(persistConfig, counterReducer);
-
+const persistedMovieReducer = persistReducer(persistConfig, movieReducer);
 
 export const store = configureStore({
-    reducer: {
-        counter: persistedCounterReducer
-    },
-     middleware: (getDefaultMiddleware) =>
+  reducer: {
+    movie: persistedMovieReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-})
+});
 
 export const persistor = persistStore(store);
 

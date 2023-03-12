@@ -4,12 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   addMovie,
   removeMovie,
-} from "../GlobalRedux/Features/counter/counterSlice";
+} from "../GlobalRedux/Features/counter/movieSlice";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import React from "react";
+import { ElectricalServicesTwoTone } from "@mui/icons-material";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -17,14 +18,17 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 const AddFavorite = ({ favorite }) => {
   const [open, setOpen] = useState(false);
+  const movieList = useSelector((state) => state.movie.list);
 
   const dispatch = useDispatch();
 
-  const store = useSelector((store) => store);
-
   const favoriteMovieHandler = (movie) => {
-    dispatch(addMovie(movie));
-    setOpen(true);
+    if (movieList.includes(movie)) {
+      dispatch(removeMovie(movie));
+    } else {
+      dispatch(addMovie(movie));
+      setOpen(true);
+    }
   };
 
   const handleClose = (event, reason) => {
@@ -40,9 +44,8 @@ const AddFavorite = ({ favorite }) => {
         variant="contained"
         onClick={() => {
           favoriteMovieHandler(favorite);
-          console.log(store);
         }}>
-        make favorite
+        {movieList.includes(favorite) ? "remove favorites" : "make favorite"}
       </Button>
       <Snackbar
         open={open}

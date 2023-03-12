@@ -22,16 +22,20 @@ const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    addMovie(state, action: PayloadAction<string>) {
+    addMovie(state, action) {
       state.list.push(action.payload);
     },
-    removeMovie(state, action: PayloadAction<string>) {
-      //   state.list = state.list.filter((todo) => todo.id !== action.payload);
-      console.log(action.payload);
+    removeMovie(state, action) {
+      state.list = state.list.filter(
+        (movie) => movie.imdbID !== action.payload.imdbID
+      );
+    },
+    clearMovies(state, action) {
+      state.list = [];
     },
   },
 });
 
-export const { addMovie, removeMovie } = movieSlice.actions;
+export const { addMovie, removeMovie, clearMovies } = movieSlice.actions;
 
 export default movieSlice.reducer;
