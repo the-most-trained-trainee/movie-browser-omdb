@@ -1,6 +1,11 @@
 "use client";
 import MovieCard from "./MovieCard";
 import { Grid } from "@mui/material";
+import { Movie } from "../data-fetching/getMovies";
+
+interface Props {
+  movies: Movie[];
+}
 
 const movieListStyles = {
   ml: "auto",
@@ -10,7 +15,7 @@ const movieListStyles = {
   mb: 9,
 };
 
-const MovieList = ({ movies }) => {
+const MovieList: React.FC<Props> = ({ movies }: Props) => {
   return (
     <>
       {!!movies.length && (

@@ -2,14 +2,12 @@
 
 import { useSelector, useDispatch } from "react-redux";
 import { addMovie, removeMovie } from "../redux/movie/movieSlice";
-import { Button } from "@mui/material";
-import { useState } from "react";
-import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
-import React from "react";
-import { ElectricalServicesTwoTone } from "@mui/icons-material";
+import { RootState } from "../redux/store";
+import React, { useState } from "react";
 import Alert from "./Alert";
 import { Movie } from "../data-fetching/getMovies";
-import { RootState } from "../redux/store";
+import { Button } from "@mui/material";
+import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
 import SendIcon from "@mui/icons-material/Send";
 
 interface Props {
