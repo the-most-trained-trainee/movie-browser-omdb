@@ -1,4 +1,4 @@
-import { Providers } from "./app_files/redux/provider";
+import Providers from "./app_files/redux/provider";
 import Menu from "./app_files/components/Menu";
 
 interface Props {
