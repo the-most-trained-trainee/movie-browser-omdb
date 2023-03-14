@@ -12,15 +12,23 @@ const Movie = async ({ params }: Props): Promise<JSX.Element> => {
   const movie = await getMovieById(movieId);
 
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        marginRight: "auto",
+        marginLeft: "auto",
+      }}>
       <h1>{movie.Title}</h1>
       <h2>{movie.Year}</h2>
-      <Image src={movie.Poster} alt="Movie Poster" />
+      <Image src={movie.Poster} alt="Movie Poster" width={270} height={450} />
       <p>
         Rating: {movie.imdbRating} ({movie.imdbVotes} votes)
       </p>
       <p>{movie.Plot}</p>
-    </>
+    </div>
   );
 };
 
