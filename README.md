@@ -1,5 +1,5 @@
-## Deploy on Vercel
+# Next.js Luna Edge Test Task
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The most complicated issue was to implement redux-toolkit into the new app-routing system. There was no clear and precise guide in the Next 13 docs and Internet. The only working way was to make a "Providers wrapper", but its using destroys SSR meaning that the browser receives only "script-trash" without a valid HTML markup.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The four-day deadline has expired, but no working solution has been found. At least it was quite crashing challenge. Hope that the next "next" time will be better.
