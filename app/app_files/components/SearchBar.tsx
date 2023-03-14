@@ -22,8 +22,9 @@ const SearchBar: React.FC = () => {
   const [search, setSearch] = useState("");
   const router = useRouter();
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) =>
-    setSearch(e.currentTarget.value);
+  const handleChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => setSearch(e.currentTarget.value);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
