@@ -1,7 +1,13 @@
 import getMovieById from "@/app/app_files/data-fetching/getMovieByID";
 import Image from "next/image";
 
-const Movie = async ({ params }) => {
+interface Props {
+  params: {
+    slug: string;
+  };
+}
+
+const Movie = async ({ params }: Props): Promise<JSX.Element> => {
   const movieId = params.slug;
   const movie = await getMovieById(movieId);
 
