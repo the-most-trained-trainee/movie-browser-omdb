@@ -1,7 +1,7 @@
 "use client";
 
 import { configureStore } from "@reduxjs/toolkit";
-import movieReducer from "./Features/counter/movieSlice";
+import movieReducer from "./movie/movieSlice";
 
 import storage from "redux-persist/lib/storage";
 import {

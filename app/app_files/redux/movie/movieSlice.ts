@@ -1,6 +1,6 @@
 "use client";
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type Movie = {
   Title: string;
@@ -22,15 +22,15 @@ const movieSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    addMovie(state, action) {
+    addMovie(state, action: PayloadAction<Movie>) {
       state.list.push(action.payload);
     },
-    removeMovie(state, action) {
+    removeMovie(state, action: PayloadAction<Movie>) {
       state.list = state.list.filter(
         (movie) => movie.imdbID !== action.payload.imdbID
       );
     },
-    clearMovies(state, action) {
+    clearMovies(state, action: PayloadAction<undefined>) {
       state.list = [];
     },
   },

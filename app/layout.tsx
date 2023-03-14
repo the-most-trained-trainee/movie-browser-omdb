@@ -1,11 +1,11 @@
-import { Providers } from "./GlobalRedux/provider";
-import Menu from "./components/Menu";
+import { Providers } from "./app_files/redux/provider";
+import Menu from "./app_files/components/Menu";
 
-export default function RootLayout({
-  children,
-}: {
+interface Props {
   children: React.ReactNode;
-}) {
+}
+
+const RootLayout: React.FC<Props> = ({ children }: Props) => {
   return (
     <html lang="en">
       {/*
@@ -21,4 +21,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

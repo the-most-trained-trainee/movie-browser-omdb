@@ -1,15 +1,16 @@
 // "use client";
 
-import Searchbar from "./components/SearchBar";
+import Searchbar from "./app_files/components/SearchBar";
 
 import { Roboto } from "next/font/google";
 
 const font = Roboto({ weight: "400", subsets: ["latin"] });
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
     <main className={font.className}>
       <Searchbar />
     </main>
   );
-}
+};
+export default Home;

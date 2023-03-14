@@ -1,12 +1,13 @@
 "use client";
-import { Card } from "@mui/material";
+import { Card, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import AddFavorite from "./addFavorite";
-import { Grid } from "@mui/material";
-import ReadMore from "./readMore";
+import Link from "next/link";
+import AddFavorite from "./AddFavorite";
+import { Movie } from "../data-fetching/getMovies";
+import { Roboto } from "next/font/google";
+
+const font = Roboto({ weight: "400", subsets: ["latin"] });
 
 const cardStyles = {
   maxWidth: 260,
@@ -22,15 +23,22 @@ const cardStyles = {
     "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px",
 };
 
-const MovieCard = ({ movie }) => {
+interface Props {
+  movie: Movie;
+}
+
+const MovieCard: React.FC<Props> = ({ movie }: Props) => {
   return (
-    <Grid item xs="12" md="4">
+    <Grid item>
       <Card sx={cardStyles}>
         <Typography paragraph>
           {movie.Title} ({movie.Year})
         </Typography>
         <Image src={movie.Poster} width={250} height={350} alt="Movie Poster" />
-        <AddFavorite favorite={movie} /> <ReadMore />
+        <Link href={`/movie/${movie.imdbID}`} className={font.className}>
+          Read more...
+        </Link>
+        <AddFavorite favorite={movie} />
       </Card>
     </Grid>
   );
